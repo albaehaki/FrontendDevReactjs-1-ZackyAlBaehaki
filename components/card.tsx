@@ -1,4 +1,6 @@
 import React from 'react'
+import Link from "next/link";
+import { useRouter } from 'next/navigation'
 
 // {
 //     "name": "Recycled Metal Computer",
@@ -13,11 +15,17 @@ import React from 'react'
 // components
 import Rating from './ratings'
 
+// store
+import useDetailStore from "@/store/detailStore"
+
 function card({data}: any) {
-
-
+const add = useDetailStore((state) => state.add)
+const router = useRouter()
   return (
-    <div>
+    <div onClick={() => {
+      add(data)
+      router.push(`/detail?id=${data.id}`)
+    }}>
           <div
             className="bg-cover bg-center h-[200px] w-full"
             style={{

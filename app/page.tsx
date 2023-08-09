@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Layout from "./layout";
 
@@ -11,7 +12,12 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 // data dummy
 import { dummyData } from "@/store/dummyData";
 
+// store
+import useDetailStore from "@/store/detailStore"
+
+
 export default function Home() {
+  const add = useDetailStore((state) => state.add)
   return (
     <Layout>
       <div className="mx-10 my-5">
